@@ -208,7 +208,8 @@ footer { text-align: center; padding: 1rem 1.25rem 2.5rem; font-size: .85rem; }
 @media (min-width: 900px) {
   .hero { padding-top: 1.5rem; }
   .forty { width: 230px; }
-  .scene { height: 440px; }
+  /* never wider than the height can show whole; sky and sea paint past the edges */
+  .scene { height: 440px; width: min(100%, 1173px); margin-inline: auto; overflow: visible; }
 }
 
 /* plus-ones stepper */
