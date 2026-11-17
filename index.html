@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- ═══════════ CONFIG: the only values to fill in ═══════════ -->
+  <script>
+    window.FLYER_CONFIG = {
+      API_BASE: "__API_BASE_URL__",                     // the guest-rsvp endpoint
+      ANON_KEY: "__ANON_KEY_IF_NEEDED__",               // only if the server checks a JWT on every call
+      FRIDAY_OPEN_LINK: "__FRIDAY_OPEN_LINK_TOKEN__",   // squadquest-axi guests open-link, Friday
+      SATURDAY_OPEN_LINK: "__SATURDAY_OPEN_LINK_TOKEN__",
+      FRIDAY_EVENT_ID: "",                              // optional: lets a guest answer even if the open link closes
+      SATURDAY_EVENT_ID: "",
+      PAGE_URL: "https://themightychris.github.io/chris-turns-40",                         // also write it into the og: tags just below
+      TIMEZONE: "America/New_York",
+      EMBED_SRC: "squadquest-rsvp.js"
+    };
+  </script>
+  <!-- /config -->
+  <!-- guest links carry a token in the address: never send it to other sites -->
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#16123d">
+  <title>Chris turns 40</title>
+  <meta name="description" content="Two nights for Chris's 40th: Friday November 20 at Black Squirrel Club, Saturday November 21 in the courtyard.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Chris turns 40">
+  <meta property="og:description" content="Friday Nov 20 at Black Squirrel Club. Saturday Nov 21 in the courtyard. RSVP inside.">
+  <meta property="og:url" content="https://themightychris.github.io/chris-turns-40">
+  <meta property="og:image" content="https://themightychris.github.io/chris-turns-40/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Chris turns 40: a ringed orange sun setting over water. Fri Nov 20 and Sat Nov 21, 2026.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Chris turns 40">
+  <meta name="twitter:description" content="Friday Nov 20 at Black Squirrel Club. Saturday Nov 21 in the courtyard. RSVP inside.">
+  <meta name="twitter:image" content="https://themightychris.github.io/chris-turns-40/og.png">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <svg class="stars" viewBox="0 0 400 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <g fill="#fff6e8">
+        <circle cx="30" cy="40" r="1.4"/><circle cx="88" cy="22" r="1"/><circle class="tw" cx="140" cy="70" r="1.8"/>
+        <circle cx="210" cy="30" r="1.1"/><circle cx="262" cy="84" r="1.3"/><circle class="tw d2" cx="330" cy="36" r="1.9"/>
+        <circle cx="372" cy="110" r="1"/><circle cx="52" cy="128" r="1.2"/><circle class="tw d3" cx="118" cy="180" r="1.5"/>
+        <circle cx="300" cy="170" r="1"/><circle cx="356" cy="230" r="1.4"/><circle cx="20" cy="250" r="1"/>
+        <circle class="tw d2" cx="190" cy="140" r="1.2"/><circle cx="240" cy="220" r="0.9"/><circle cx="80" cy="300" r="1"/>
+        <circle cx="380" cy="320" r="1.1"/><circle class="tw" cx="320" cy="290" r="1.5"/><circle cx="160" cy="260" r="0.9"/>
+      </g>
+    </svg>
+    <div class="hero-text">
+      <p class="eyebrow">A two-night birthday launch</p>
+      <h1>
+        <span class="pre">Chris turns</span>
+        <svg class="forty" viewBox="-4 -4 276 186" role="img" aria-label="40">
+          <g fill="none" stroke-width="30" stroke-linejoin="miter">
+            <g stroke="#ff7417" transform="translate(9 9)">
+              <path d="M96 12 L18 112 H128 M96 12 V160"/><rect x="152" y="12" width="96" height="148" rx="48"/>
+            </g>
+            <g stroke="#fff3df">
+              <path d="M96 12 L18 112 H128 M96 12 V160"/><rect x="152" y="12" width="96" height="148" rx="48"/>
+            </g>
+          </g>
+        </svg>
+      </h1>
+      <p class="dates"><a href="#friday">Fri Nov 20</a> <span aria-hidden="true">✦</span> <a href="#saturday">Sat Nov 21</a> · 2026</p>
+      <p class="hello" data-hello hidden></p>
+    </div>
+    <svg class="scene" viewBox="0 0 800 300" preserveAspectRatio="xMidYMin slice" aria-hidden="true">
+      <defs>
+        <linearGradient id="glow" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#ff8a3d" stop-opacity="0"/><stop offset="1" stop-color="#ff8a3d" stop-opacity=".55"/>
+        </linearGradient>
+        <radialGradient id="sun" cx=".42" cy=".35" r=".75">
+          <stop offset="0" stop-color="#ffd27a"/><stop offset=".55" stop-color="#ff8a2a"/><stop offset="1" stop-color="#e2541a"/>
+        </radialGradient>
+        <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#3a3170"/><stop offset=".35" stop-color="#173a63"/><stop offset="1" stop-color="#0a2340"/>
+        </linearGradient>
+        <mask id="bands">
+          <rect width="800" height="300" fill="#fff"/>
+          <g fill="#000"><rect y="136" width="800" height="4"/><rect y="152" width="800" height="6"/><rect y="168" width="800" height="8"/><rect y="182" width="800" height="9"/></g>
+        </mask>
+        <clipPath id="back"><rect x="0" y="0" width="800" height="150"/></clipPath>
+        <clipPath id="front"><rect x="0" y="150" width="800" height="150"/></clipPath>
+        <clipPath id="earth-clip"><circle r="10"/></clipPath>
+        <symbol id="earth" viewBox="-11 -11 22 22" overflow="visible">
+          <circle r="10" fill="#2a7de1"/>
+          <g clip-path="url(#earth-clip)" fill="#3fb45c">
+            <path d="M-7-6C-4-9 1-7 0-3S-4 1-5 5C-8 3-9-2-7-6Z"/><path d="M2 0C5-2 9 2 7 6S2 8 2 0Z"/><path d="M3-8C6-9 8-6 5-5S2-6 3-8Z"/>
+          </g>
+          <circle r="10" fill="none" stroke="#d6ecff" stroke-width="1.3"/>
+          <path d="M-6.5-5.5A8 8 0 0 1 1.5-8.3" stroke="#fff" stroke-width="1.5" fill="none" stroke-linecap="round" opacity=".7"/>
+        </symbol>
+      </defs>
+      <rect width="800" height="192" fill="url(#glow)"/>
+      <g transform="rotate(-10 400 150)"><ellipse clip-path="url(#back)" cx="400" cy="150" rx="200" ry="34" fill="none" stroke="#ffd9b0" stroke-width="7" opacity=".85"/></g>
+            <g transform="rotate(-10 400 150)"><g clip-path="url(#back)"><g class="ex"><g class="ey"><use class="earth" href="#earth" x="388" y="138" width="24" height="24"/></g></g></g></g>
+      <circle cx="400" cy="150" r="118" fill="url(#sun)" mask="url(#bands)"/>
+      <rect y="190" width="800" height="110" fill="url(#sea)"/>
+      <g class="reflect" fill="#ff9a4a">
+        <rect x="320" y="200" width="160" height="5" rx="2.5"/><rect class="w2" x="336" y="214" width="128" height="5" rx="2.5"/>
+        <rect x="352" y="229" width="96" height="4" rx="2"/><rect class="w2" x="366" y="244" width="68" height="4" rx="2"/>
+        <rect x="380" y="259" width="40" height="3" rx="1.5"/><rect class="w2" x="390" y="273" width="20" height="3" rx="1.5"/>
+      </g>
+      <g transform="rotate(-10 400 150)"><ellipse clip-path="url(#front)" cx="400" cy="150" rx="200" ry="34" fill="none" stroke="#ffe7c9" stroke-width="7"/></g>
+      <g transform="rotate(-10 400 150)"><g clip-path="url(#front)"><g class="ex"><g class="ey"><use class="earth" href="#earth" x="388" y="138" width="24" height="24"/></g></g></g></g>
+    </svg>
+  </header>
+
+  <main>
+    <h2 class="section-title">Itinerary</h2>
+    <ol class="itinerary">
+      <li>
+        <section class="night" data-night="friday" id="friday" aria-labelledby="fri-h">
+          <figure class="porthole"><img src="photos/friday.jpg" width="1200" height="1200" alt="TK describe the Friday photo"></figure>
+          <p class="stop">Night 1 · Friday, Nov 20</p>
+          <h3 id="fri-h">Black Squirrel Club</h3>
+          <p class="sub">Drew Nugent and the Midnight Society</p>
+          <dl class="facts">
+            <dt>Show</dt><dd>7:30 to 10:30 pm · doors TK</dd>
+            <dt>Where</dt><dd>1049 Sarah St, Fishtown</dd>
+            <dt>Tickets</dt><dd><a href="https://blacksquirrelclub.com/events/2026-11-20-drew-nugent-and-the-midnight-society/" rel="noopener">Get a ticket at the club</a> · TK price</dd>
+          </dl>
+          <p class="note">Open invite: bring whoever you like.</p>
+          <div class="rsvp" data-rsvp><p>RSVP opens here soon. Until then, text Chris.</p></div>
+        </section>
+      </li>
+      <li>
+        <section class="night" data-night="saturday" id="saturday" aria-labelledby="sat-h">
+          <figure class="porthole"><img src="photos/saturday.jpg" width="1200" height="1200" alt="TK describe the Saturday photo"></figure>
+          <p class="stop">Night 2 · Saturday, Nov 21</p>
+          <h3 id="sat-h">Courtyard party</h3>
+          <p class="sub">Orianna Courtyard</p>
+          <dl class="facts">
+            <dt>Arrive</dt><dd>6 to 9 pm · wraps by 11 pm</dd>
+            <dt>Where</dt><dd>Orianna Courtyard, TK street address</dd>
+            <dt>Bring</dt><dd>TK</dd>
+          </dl>
+          <p class="note">Open invite: bring whoever you like.</p>
+          <div class="rsvp" data-rsvp><p>RSVP opens here soon. Until then, text Chris.</p></div>
+        </section>
+      </li>
+    </ol>
+  </main>
+
+  <footer>
+    <p>RSVPs by SquadQuest. A personal link is just for you: please don't forward it.</p>
+  </footer>
+  <script src="shared/flyer-core.js" defer></script>
+</body>
+</html>

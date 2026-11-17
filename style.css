@@ -1,0 +1,221 @@
+/* Concept A: Orbit 40, a retro space-travel poster at dusk */
+:root {
+  --night: #16123d;
+  --dusk: #3b1f63;
+  --cream: #fff3df;
+  --paper: #fbf3e6;
+  --ink: #1b1638;
+  --orange: #ff7417;
+  --orange-ink: #b8460a; /* orange dark enough for text on paper: AA */
+  --sea: #173a63;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font: 17px/1.5 "Avenir Next", Avenir, "Century Gothic", "Segoe UI", system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+}
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; }
+
+/* hero */
+.hero {
+  position: relative;
+  overflow: hidden;
+  color: var(--cream);
+  background: linear-gradient(180deg, #0d0b2b 0%, var(--night) 30%, var(--dusk) 62%, #8c3463 88%, #d8603f 100%);
+  padding-top: 2.25rem;
+}
+.stars { position: absolute; inset: 0; width: 100%; height: 100%; }
+.hero-text { position: relative; text-align: center; padding: 0 1.25rem; }
+.eyebrow {
+  margin: 0;
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  opacity: .92;
+}
+h1 { margin: .9rem 0 0; line-height: 1; font-weight: 800; }
+h1 .pre {
+  display: block;
+  font-size: clamp(1.5rem, 7vw, 2.4rem);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.forty { display: block; width: min(68vw, 300px); height: auto; margin: .9rem auto 0; }
+.dates {
+  margin: 1.1rem 0 0;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  font-size: .95rem;
+}
+.dates a { text-decoration: none; border-bottom: 2px solid var(--orange); }
+.hello { margin: .9rem auto 0; max-width: 24rem; font-size: 1.05rem; font-weight: 600; }
+.not-me { font: inherit; font-weight: 400; color: inherit; background: none; border: 0; padding: 0; text-decoration: underline; cursor: pointer; }
+.scene { position: relative; display: block; width: 100%; height: clamp(230px, 34vw, 360px); margin-top: .5rem; }
+
+/* itinerary */
+main { max-width: 36rem; margin: 0 auto; padding: 2rem 1.1rem 1rem; }
+.section-title {
+  margin: 0 0 1.25rem;
+  font-size: .8rem;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--orange-ink);
+}
+.itinerary { list-style: none; margin: 0; padding: 0 0 0 1.6rem; position: relative; }
+.itinerary::before { /* the orbit line */
+  content: "";
+  position: absolute;
+  left: .45rem;
+  top: .6rem;
+  bottom: 2rem;
+  border-left: 3px dotted var(--orange);
+}
+.itinerary > li { position: relative; margin-bottom: 2.25rem; }
+.itinerary > li::before { /* a small planet per stop */
+  content: "";
+  position: absolute;
+  left: -1.6rem;
+  top: .2rem;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #ffd27a, var(--orange) 60%, #c94a12);
+  box-shadow: 0 0 0 4px var(--paper);
+}
+.night {
+  background: #fff;
+  border: 2px solid var(--ink);
+  border-radius: 18px;
+  padding: 1.25rem 1.1rem 1.1rem;
+  box-shadow: 6px 6px 0 var(--ink);
+}
+.night.is-target { box-shadow: 6px 6px 0 var(--orange); }
+.porthole {
+  margin: 0 auto 1rem;
+  width: 62%;
+  max-width: 220px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 6px solid var(--ink);
+  outline: 3px solid var(--orange);
+  outline-offset: 4px;
+}
+.porthole img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.stop {
+  margin: 0;
+  font-size: .8rem;
+  font-weight: 800;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--orange-ink);
+}
+.night h3 { margin: .2rem 0 0; font-size: 1.75rem; line-height: 1.1; font-weight: 800; }
+.sub { margin: .2rem 0 .8rem; font-style: italic; }
+.facts { display: grid; grid-template-columns: auto 1fr; gap: .35rem .9rem; margin: 0 0 .8rem; }
+.facts dt { font-weight: 800; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; padding-top: .2rem; }
+.facts dd { margin: 0; }
+.note { margin: 0 0 1rem; font-weight: 600; }
+.rsvp { border-top: 2px dashed rgba(27, 22, 56, .35); padding-top: 1rem; }
+.rsvp-loading { margin: 0; opacity: .8; }
+
+/* the embed, restyled: the night above already says what and where */
+.night .sqr-card { border: 0; padding: 0; background: none; }
+.night .sqr-banner, .night .sqr-title, .night .sqr-when, .night .sqr-where, .night .sqr-notes { display: none; }
+.sqr-answers { gap: .5rem; }
+.sqr-answer {
+  min-height: 3.4rem;
+  border: 2px solid var(--ink) !important;
+  border-radius: 14px !important;
+  background: #fff !important;
+  color: var(--ink) !important;
+  font-weight: 800;
+  font-size: 1rem !important;
+}
+.sqr-answer[aria-pressed="true"] { background: var(--orange) !important; color: var(--ink) !important; box-shadow: 0 0 0 3px var(--ink); }
+.sqr-field label { font-weight: 700; font-size: .9rem; }
+.sqr-field input { border: 2px solid var(--ink) !important; border-radius: 12px !important; background: #fffaf2; }
+.sqr-greeting { font-size: 1rem !important; margin-bottom: .25rem !important; }
+.sqr-status { color: var(--ink); }
+.sqr-error { color: #a1001c !important; }
+.sqr-join { opacity: 1 !important; font-size: .92rem !important; margin-top: .5rem !important; }
+
+footer { text-align: center; padding: 1rem 1.25rem 2.5rem; font-size: .85rem; }
+
+/* motion: a slow twinkle and a lazy wave, both off when asked */
+@media (prefers-reduced-motion: no-preference) {
+  .tw { animation: twinkle 3.6s ease-in-out infinite; }
+  .tw.d2 { animation-delay: 1.2s; }
+  .tw.d3 { animation-delay: 2.3s; }
+  .reflect rect { animation: sway 6s ease-in-out infinite alternate; }
+  .reflect .w2 { animation-delay: -3s; }
+}
+@keyframes twinkle { 50% { opacity: .2; } }
+@keyframes sway { from { transform: translateX(-6px); } to { transform: translateX(6px); } }
+
+@media (min-width: 900px) {
+  main { max-width: 64rem; }
+  .itinerary { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; padding: 0; }
+  .itinerary::before, .itinerary > li::before { display: none; }
+}
+
+/* Earth on the ring: two synced copies, one clipped to the back half (behind
+   the sun), one to the front. Resting spot, used under reduced motion: front right */
+.ex { transform: translateX(150px); }
+.ey { transform: translateY(22px); }
+@media (prefers-reduced-motion: no-preference) {
+  .ex { animation: a-ex 16s ease-in-out infinite alternate; }
+  .ey { animation: a-ey 16s ease-in-out -8s infinite alternate; }
+}
+@keyframes a-ex { from { transform: translateX(-200px); } to { transform: translateX(200px); } }
+@keyframes a-ey { from { transform: translateY(-34px); } to { transform: translateY(34px); } }
+
+/* the one-time step */
+.sqr-step { border: 2px solid var(--ink) !important; border-radius: 14px !important; background: #fffaf2; }
+.sqr-submit { background: var(--ink) !important; color: var(--cream) !important; border-color: var(--ink) !important; border-radius: 14px !important; }
+.sqr-answer[aria-pressed="true"]::before { content: "\2713\00a0"; } /* a cue that is not only colour */
+
+/* notes */
+.sqr-note { margin-top: .6rem; }
+.sqr-note-add { font-weight: 700 !important; min-height: 44px; text-decoration-thickness: 2px !important; text-underline-offset: 4px; }
+.sqr-note-text { background: #fff6ea; border-left: 4px solid var(--orange); border-radius: 6px; padding: .6rem .75rem; }
+.sqr-note-text .sqr-link { font-weight: 700; margin-left: .25rem; min-height: 32px; }
+.sqr-note-label { font-weight: 800 !important; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; }
+.sqr-note-form { background: #fffaf2; border: 2px solid var(--ink); border-radius: 14px; padding: .8rem; }
+.sqr-note-count { color: #4a4566; opacity: 1 !important; }
+.sqr-note-status { font-weight: 600; }
+.sqr-step .sqr-field input, .sqr-note-form .sqr-field input { width: 100%; }
+
+/* three equal buttons at any width, even with the check mark */
+.sqr-answers { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
+.sqr-answer { padding-inline: .3rem !important; }
+@media (max-width: 360px) {
+  .itinerary { padding-left: 1.2rem; }
+  .itinerary > li::before { left: -1.25rem; width: 1rem; height: 1rem; }
+  .itinerary::before { left: .35rem; }
+  .night { padding: 1rem .85rem .9rem; box-shadow: 4px 4px 0 var(--ink); }
+  .sqr-answer { font-size: .92rem !important; }
+  .sqr-answer[aria-pressed="true"]::before { display: block; content: "\2713"; }
+}
+/* desktop: show the whole sea under the planet */
+@media (min-width: 900px) {
+  .hero { padding-top: 1.5rem; }
+  .forty { width: 230px; }
+  .scene { height: 440px; }
+}
+
+/* plus-ones stepper */
+.sqr-plus { margin-top: .9rem !important; padding: .6rem .75rem; border: 2px dashed rgba(27, 22, 56, .35); border-radius: 14px; }
+.sqr-plus-q { font-weight: 800 !important; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; }
+.sqr-plus-btn { border-color: var(--ink) !important; background: #fff !important; color: var(--ink) !important; }
+.sqr-plus-btn:not(:disabled):active { background: var(--orange) !important; }
+.sqr-plus-val { font-size: 1.05rem; min-width: 6.5rem !important; }
+.sqr-plus-msg { min-height: 1.2em; color: #4a4566; }
+.sqr-plus-msg.sqr-error { color: #a1001c !important; }
