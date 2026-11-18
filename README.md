@@ -6,6 +6,14 @@ The RSVP widget is `squadquest-rsvp.js`. Its reference follows.
 
 ---
 
+## Cache busting
+
+`index.html` and `preview.html` link the stylesheet and scripts with a `?v=` stamp, a short
+hash of each file's content. GitHub Pages lets browsers keep files for 10 minutes, so without
+the stamp a visitor can get a new page with an old stylesheet. Run `tools/stamp-assets.sh`
+before committing a change to `style.css` or any script. The `asset stamps` workflow fails
+when a stamp is stale.
+
 # SquadQuest RSVP embed (pilot)
 
 `squadquest-rsvp.js` lets any static page collect yes / maybe / no answers from guests

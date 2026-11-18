@@ -1,0 +1,16 @@
+name: asset stamps
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Stamps match the assets
+        run: |
+          ./tools/stamp-assets.sh
+          git diff --exit-code -- index.html preview.html
