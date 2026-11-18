@@ -6,12 +6,12 @@
   <!-- ═══════════ CONFIG: the only values to fill in ═══════════ -->
   <script>
     window.FLYER_CONFIG = {
-      API_BASE: "__API_BASE_URL__",                     // the guest-rsvp endpoint
-      ANON_KEY: "__ANON_KEY_IF_NEEDED__",               // only if the server checks a JWT on every call
-      FRIDAY_OPEN_LINK: "__FRIDAY_OPEN_LINK_TOKEN__",   // squadquest-axi guests open-link, Friday
-      SATURDAY_OPEN_LINK: "__SATURDAY_OPEN_LINK_TOKEN__",
-      FRIDAY_EVENT_ID: "",                              // optional: lets a guest answer even if the open link closes
-      SATURDAY_EVENT_ID: "",
+      API_BASE: "https://supabase.squadquest.app/functions/v1/guest-rsvp",                     // the guest-rsvp endpoint
+      ANON_KEY: "",               // only if the server checks a JWT on every call
+      FRIDAY_OPEN_LINK: "0ff192476e044a4cbb5e98d1a9a1658c29aacbb538ed4dd5aad0199eae500aaa",   // squadquest-axi guests open-link, Friday
+      SATURDAY_OPEN_LINK: "676eb0d1b1284877bab4087da3ee7c08705075e2765c480db5ca184b356a101e",
+      FRIDAY_EVENT_ID: "3ab2dd92-ab77-43c5-8bf6-d5faf8b7d4be",                              // optional: lets a guest answer even if the open link closes
+      SATURDAY_EVENT_ID: "febd0d6b-f80e-4bd2-8451-0bedd6d7bbd4",
       PAGE_URL: "https://40.chrisrules.com",                         // also write it into the og: tags just below
       TIMEZONE: "America/New_York",
       EMBED_SRC: "squadquest-rsvp.js"
