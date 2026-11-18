@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//chris-turns-40//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:friday@40.chrisrules.com
+DTSTAMP:20261118T040000Z
+DTSTART:20261121T003000Z
+DTEND:20261121T033000Z
+SUMMARY:Chris turns 40: Drew Nugent and the Midnight Society
+LOCATION:Black Squirrel Club\, 1049 Sarah St\, Philadelphia\, PA
+DESCRIPTION:Doors 6:30 pm\, music 7:30 to 10:30 pm. Tickets about $20. Details and RSVP: https://40.chrisrules.com
+URL:https://40.chrisrules.com
+END:VEVENT
+END:VCALENDAR

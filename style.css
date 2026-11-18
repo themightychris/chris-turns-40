@@ -270,3 +270,9 @@ footer { text-align: center; padding: 1rem 1.25rem 2.5rem; font-size: .85rem; }
 @keyframes c-pop { 0% { transform: scale(.92); } 55% { transform: scale(1.05); } 100% { transform: scale(1); } }
 @keyframes c-pulse { 0%, 100% { opacity: 1; } 35% { opacity: .45; } }
 @keyframes c-breathe { 0%, 100% { transform: scale(1); } 40% { transform: scale(1.12); } }
+
+/* add to calendar */
+.cal { margin: 0 0 1rem; display: flex; flex-wrap: wrap; align-items: center; gap: .4rem .5rem; }
+.cal-label { font-weight: 800; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; margin-right: .2rem; }
+.cal-btn { display: inline-flex; align-items: center; min-height: 2.4rem; padding: .3rem .8rem; border: 2px solid var(--ink); border-radius: 999px; background: #fff; color: var(--ink); font-weight: 700; font-size: .9rem; text-decoration: none; }
+.cal-btn:hover, .cal-btn:focus-visible { background: var(--orange); }

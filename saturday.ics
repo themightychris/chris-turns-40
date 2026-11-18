@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//chris-turns-40//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:saturday@40.chrisrules.com
+DTSTAMP:20261118T040000Z
+DTSTART:20261121T230000Z
+DTEND:20261122T040000Z
+SUMMARY:Chris turns 40: courtyard party
+LOCATION:Orianna Courtyard\, 944 N Orianna St\, Philadelphia\, PA
+DESCRIPTION:Arrive any time from 6 to 10 pm. Wraps by 11. Bring drinks and snacks. Details and RSVP: https://40.chrisrules.com
+URL:https://40.chrisrules.com
+END:VEVENT
+END:VCALENDAR
