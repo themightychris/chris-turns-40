@@ -271,8 +271,14 @@ footer { text-align: center; padding: 1rem 1.25rem 2.5rem; font-size: .85rem; }
 @keyframes c-pulse { 0%, 100% { opacity: 1; } 35% { opacity: .45; } }
 @keyframes c-breathe { 0%, 100% { transform: scale(1); } 40% { transform: scale(1.12); } }
 
-/* add to calendar */
-.cal { margin: 0 0 1rem; display: flex; flex-wrap: wrap; align-items: center; gap: .4rem .5rem; }
-.cal-label { font-weight: 800; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; margin-right: .2rem; }
-.cal-btn { display: inline-flex; align-items: center; min-height: 2.4rem; padding: .3rem .8rem; border: 2px solid var(--ink); border-radius: 999px; background: #fff; color: var(--ink); font-weight: 700; font-size: .9rem; text-decoration: none; }
-.cal-btn:hover, .cal-btn:focus-visible { background: var(--orange); }
+/* add to calendar: one button that opens the options */
+.cal { margin: 0 0 1rem; position: relative; }
+.cal-toggle { display: inline-flex; align-items: center; gap: .5rem; min-height: 2.6rem; padding: .35rem 1rem; border: 2px solid var(--ink); border-radius: 999px; background: #fff; color: var(--ink); font-weight: 800; font-size: .92rem; cursor: pointer; list-style: none; user-select: none; }
+.cal-toggle::-webkit-details-marker { display: none; }
+.cal-toggle::after { content: ""; width: .45rem; height: .45rem; border-right: 2px solid var(--ink); border-bottom: 2px solid var(--ink); transform: translateY(-2px) rotate(45deg); }
+.cal[open] .cal-toggle { background: var(--orange); }
+.cal[open] .cal-toggle::after { transform: translateY(2px) rotate(-135deg); }
+.cal-menu { position: absolute; z-index: 5; top: calc(100% + .4rem); left: 0; min-width: 13rem; display: grid; background: #fff; border: 2px solid var(--ink); border-radius: 14px; box-shadow: 4px 4px 0 var(--ink); overflow: hidden; }
+.cal-opt { display: flex; align-items: center; min-height: 2.75rem; padding: .4rem 1rem; color: var(--ink); font-weight: 700; text-decoration: none; }
+.cal-opt + .cal-opt { border-top: 1px solid rgba(27, 22, 56, .2); }
+.cal-opt:hover, .cal-opt:focus-visible { background: #fff1e0; }
