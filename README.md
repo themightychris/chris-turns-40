@@ -84,6 +84,10 @@ stylesheet overrides them without `!important`.
 | --- | --- | --- |
 | `squadquest:rsvp` | the slot (bubbles) | `{mode: "guest" \| "open", event: <id>, rsvp: "yes" \| "maybe" \| "no", created: <bool>}`, after each saved answer |
 | `squadquest:rsvp-ready` | `document` | `{mode: "none" \| "guest" \| "open", data?}`, once the first load finishes |
+| `squadquest:answer` | a flyer slot (bubbles) | `{event: <id>, rsvp: "yes" \| "maybe" \| "no" \| null, plus: <n>, cause: "load" \| "answer" \| "plus" \| "reset"}`: the slot's answer as it stands, after the first load, each saved answer, each saved plus-one count and "Not you?" |
+
+In flyer mode the status line carries `sqr-status-saved` while it only repeats the saved
+answer, so a page with its own confirmation can hide it.
 
 ### Stored on the device
 

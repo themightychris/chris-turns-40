@@ -489,7 +489,10 @@
       }
       if (pending) root.appendChild(joinStep(s, pending));
       var text = s.msg != null ? s.msg : flyer.claimed ? CLAIMED_TEXT : cur ? savedLine(cur) : "";
-      var status = el("p", s.err ? "status error" : "status", text);
+      // sqr-status-saved: the line is only the saved answer, so a page that
+      // shows its own confirmation (from squadquest:answer) can hide it
+      var isSaved = s.msg == null && !flyer.claimed && !!cur;
+      var status = el("p", s.err ? "status error" : isSaved ? "status status-saved" : "status", text);
       status.setAttribute("aria-live", "polite");
       root.appendChild(status);
       if (wantsIn(cur) && !pending && !s.dead && !flyer.claimed) root.appendChild(plusArea(s));
@@ -503,6 +506,15 @@
   }
 
   function setMsg(s, msg, isError) { s.msg = msg; s.err = !!isError; }
+
+  // the slot's answer as it now stands, for a page's own confirmation:
+  // cause is "load", "answer" (a tap saved), "plus" (a number saved) or "reset"
+  function announce(s, cause) {
+    s.el.dispatchEvent(new CustomEvent("squadquest:answer", {
+      bubbles: true,
+      detail: { event: s.eventId, rsvp: currentAnswer(s), plus: currentPlus(s), cause: cause },
+    }));
+  }
 
   function joinStep(s, pending) {
     var form = el("form", "step");
@@ -821,6 +833,7 @@
         var ev = res.data.events.filter(function (e) { return e.id === s.eventId; })[0];
         saveLocal(s.eventId, { plus: ev && typeof ev.plus === "number" ? ev.plus : value });
         if (!stale) { s.plusShown = null; ui("Saved"); }
+        announce(s, "plus");
         return;
       }
       if (stale) return;
@@ -855,6 +868,7 @@
     saving(s);
     request("POST", "", { t: token, instance: s.eventId, status: value }).then(function (res) {
       s.busy = false;
+      var saved = false;
       if (res.status === 200 && res.data && Array.isArray(res.data.events)) {
         flyer.guest = res.data;
         flyer.claimed = !!res.data.claimed;
@@ -862,6 +876,7 @@
         setMsg(s, null);
         s.showJoin = true;
         emit(s.el, { mode: "guest", event: s.eventId, rsvp: value, created: false });
+        saved = true;
       } else if (res.data && res.data.error === "claimed") {
         flyer.claimed = true;
         setMsg(s, null);
@@ -876,6 +891,7 @@
       }
       renderFlyer();
       notifyIdentity();
+      if (saved) announce(s, "answer");
     });
   }
 
@@ -890,6 +906,7 @@
     request("POST", "", body).then(function (res) {
       s.busy = false;
       var code = res.data && res.data.error;
+      var saved = false;
       if (res.status === 200 && res.data && Array.isArray(res.data.events)) {
         store("phone", phone);
         store("name", name);
@@ -904,8 +921,9 @@
         emit(s.el, { mode: "open", event: s.eventId, rsvp: value, created: !!res.data.created });
         if (res.data.token) {
           store("token", res.data.token);
-          return loadGuest().then(function () { renderFlyer(); notifyIdentity(); });
+          return loadGuest().then(function () { renderFlyer(); notifyIdentity(); announce(s, "answer"); });
         }
+        saved = true;
       } else if (code === "claimed") {
         flyer.pending = null;
         flyer.claimed = true;
@@ -928,6 +946,7 @@
       }
       renderFlyer();
       notifyIdentity();
+      if (saved) announce(s, "answer");
     });
   }
 
@@ -984,6 +1003,7 @@
       });
       renderFlyer();
       notifyIdentity();
+      flyer.slots.forEach(function (s) { announce(s, "load"); });
       document.dispatchEvent(new CustomEvent("squadquest:rsvp-ready", {
         detail: { mode: flyer.guest ? "guest" : "open", data: flyer.guest },
       }));
@@ -1010,6 +1030,7 @@
       });
       renderFlyer();
       notifyIdentity();
+      flyer.slots.forEach(function (s) { announce(s, "reset"); });
     },
   };
 
